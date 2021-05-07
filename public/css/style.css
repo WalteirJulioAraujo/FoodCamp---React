@@ -215,3 +215,33 @@ body {
 .escondido {
   display: none;
 }
+
+.check{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contador{
+  display: none;
+}
+
+.check .contador{
+  width: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.check .contador .mais{
+  color:green;
+}
+
+.check .contador .menos{
+  color: red;
+}
+
+.check .contador .contadorVisual{
+  color: black;
+} 
