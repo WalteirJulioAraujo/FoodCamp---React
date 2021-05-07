@@ -7,14 +7,16 @@ export default function BotaoConfirmar(props) {
     sobremesasSelecionado,
   } = props;
 
-  let mensagem = "Olá, gostaria de fazer o pedido:\n"
+  let mensagem = "Olá, gostaria de fazer o pedido:\n*-Prato* : "
   let total = 0 ;
-  pratosSelecionado.forEach((e)=>mensagem+=`*-Prato* : ${e.nome} (${e.qtd}x)\n`)
-  bebidasSelecionado.forEach((e)=>mensagem+=`*-Bebidas* : ${e.nome} (${e.qtd}x)\n`)
-  sobremesasSelecionado.forEach((e)=>mensagem+=`*-Sobremesas* : ${e.nome} (${e.qtd}x)\n`)
-  pratosSelecionado.forEach((e)=>total+=Number((e.preco).replace("R$ ","").replace(",",".")))
-  bebidasSelecionado.forEach((e)=>total+=Number((e.preco).replace("R$ ","").replace(",",".")))
-  sobremesasSelecionado.forEach((e)=>total+=Number((e.preco).replace("R$ ","").replace(",",".")))
+  pratosSelecionado.forEach((e)=>mensagem+=`\n -${e.nome} (${e.qtd}x)`)
+  mensagem += "\n*-Bebidas* :"
+  bebidasSelecionado.forEach((e)=>mensagem+=`\n -${e.nome} (${e.qtd}x)`)
+  mensagem += "\n*-Sobremesas* :"
+  sobremesasSelecionado.forEach((e)=>mensagem+=`\n -${e.nome} (${e.qtd}x)`)
+  pratosSelecionado.forEach((e)=>total+= (e.qtd)*Number((e.preco).replace("R$ ","").replace(",",".")))
+  bebidasSelecionado.forEach((e)=>total+= (e.qtd)*Number((e.preco).replace("R$ ","").replace(",",".")))
+  sobremesasSelecionado.forEach((e)=>total+= (e.qtd)*Number((e.preco).replace("R$ ","").replace(",",".")))
   mensagem += `\n*-Total:* R$ ${total.toFixed(2)}`
   mensagem = encodeURIComponent(mensagem)
   const mensagemFinal=`https://wa.me/5521979507925?text=${mensagem}`
