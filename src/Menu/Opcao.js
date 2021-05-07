@@ -2,12 +2,12 @@ import React from "react";
 
 export default function Opcao(props) {
   const { selecionado, setSelecionado } = props;
-  const [Classe, setClasse] = React.useState("opcao");
+  const [isSelected, setIsSelected] = React.useState(false);
   const [Contador, setContador] = React.useState(1);
 
   function selecionar() {
-    if (Classe == "opcao") {
-      setClasse("opcao selecionado");
+    if (!isSelected) {
+      setIsSelected(true);
       setSelecionado([
         ...selecionado,
         { nome: props.titulo, preco: props.preco, qtd: 1 },
@@ -28,15 +28,18 @@ export default function Opcao(props) {
   }
 
   function diminuirContador(titulo) {
-    if (Contador === 0) {
-      return;
-    } else {
-      setContador(Contador - 1);
-      if (Contador === 1) {
-        setClasse("opcao");
-        setSelecionado(selecionado.filter((e) => e.nome != titulo));
-      }
+    const array = selecionado.filter((e) => e.nome != titulo);
+    setContador(Contador - 1);
+    if (Contador === 1) {
+      setIsSelected(false);
+      setSelecionado(selecionado.filter((e) => e.nome != titulo));
+    }else{
+      setSelecionado([
+        ...array,
+        { nome: props.titulo, preco: props.preco, qtd: Contador - 1 },
+      ]);
     }
+    
   }
 
   function verificar() {
@@ -45,7 +48,7 @@ export default function Opcao(props) {
 
   return (
     <>
-      <div class={Classe} onClick={selecionar}>
+      <div class={isSelected?"opcao selecionado":"opcao"} onClick={selecionar}>
         <img src="img/frango_yin_yang.png" />
         <button onClick={verificar}>Verificar</button>
         <div class="titulo">{props.titulo}</div>
@@ -53,7 +56,7 @@ export default function Opcao(props) {
         <div class="preco">{props.preco}</div>
         <div class="check">
           <ion-icon name="checkmark-circle"></ion-icon>
-          <div class="contador">
+          {isSelected && <div class="contador">
             <button
               class="menos"
               onClick={() => diminuirContador(props.titulo)}
@@ -64,7 +67,7 @@ export default function Opcao(props) {
             <button class="mais" onClick={() => aumentarContador(props.titulo)}>
               +
             </button>
-          </div>
+          </div>}
         </div>
       </div>
     </>

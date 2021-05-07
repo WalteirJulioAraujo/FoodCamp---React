@@ -222,9 +222,7 @@ body {
   align-items: center;
 }
 
-.contador{
-  display: none;
-}
+
 
 .check .contador{
   width: 50px;
