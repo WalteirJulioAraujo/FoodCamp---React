@@ -42,15 +42,10 @@ export default function Opcao(props) {
     
   }
 
-  function verificar() {
-    console.log(selecionado);
-  }
-
   return (
     <>
       <div class={isSelected?"opcao selecionado":"opcao"} onClick={selecionar}>
         <img src="img/frango_yin_yang.png" />
-        <button onClick={verificar}>Verificar</button>
         <div class="titulo">{props.titulo}</div>
         <div class="descricao">{props.descricao}</div>
         <div class="preco">{props.preco}</div>

@@ -21,7 +21,6 @@ export default function BotaoConfirmar(props) {
   mensagem = encodeURIComponent(mensagem)
   const mensagemFinal=`https://wa.me/5521979507925?text=${mensagem}`
 
-  console.log(mensagem);
   if (controleBotao) {
     return (
       <a href={mensagemFinal} class="fazer-pedido ativo" target="_blank">
