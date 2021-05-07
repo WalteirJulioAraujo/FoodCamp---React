@@ -1,6 +1,7 @@
 import Opcao from "./Opcao"
 
-export default function Sobremesas() {
+export default function Sobremesas(props) {
+  const{sobremesasSelecionado,setSobremesasSelecionado} = props;
   const opcao = [
     {
       titulo: "Pudim",
@@ -21,7 +22,7 @@ export default function Sobremesas() {
   return (
     <>
       {opcao.map((e) => (
-        <Opcao titulo={e.titulo} preco={e.preco} descricao={e.descricao} />
+        <Opcao titulo={e.titulo} preco={e.preco} descricao={e.descricao} selecionado={sobremesasSelecionado} setSelecionado={setSobremesasSelecionado}/>
       ))}
     </>
   );

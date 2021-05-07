@@ -1,6 +1,7 @@
 import Opcao from './Opcao';
 
-export default function Bebidas() {
+export default function Bebidas(props) {
+  const{bebidasSelecionado,setBebidasSelecionado} = props;
   const opcao = [
     {
       titulo: "Coquinha gelada",
@@ -20,7 +21,7 @@ export default function Bebidas() {
   ];
   return (
     <>
-      {opcao.map((e)=> <Opcao titulo={e.titulo} preco={e.preco} descricao={e.descricao} />)}
+      {opcao.map((e)=> <Opcao titulo={e.titulo} preco={e.preco} descricao={e.descricao} selecionado={bebidasSelecionado} setSelecionado={setBebidasSelecionado}/>)}
     </>
   );
 }
