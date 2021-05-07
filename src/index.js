@@ -1,20 +1,40 @@
-import ReactDOM from 'react-dom'
-import Menu from './Menu/Menu'
-import Header from './Header';
-import Overlay from './Overlay';
-import Footer from './Footer/Footer';
+import ReactDOM from "react-dom";
+import React from "react";
+import Menu from "./Menu/Menu";
+import Header from "./Header";
+import Overlay from "./Overlay";
+import Footer from "./Footer/Footer";
 
+function App() {
+  const [controleBotao, setControleBotao] = React.useState(false);
+  const [pratosSelecionado, setPratosSelecionado] = React.useState([]);
+  const [bebidasSelecionado, setBebidasSelecionado] = React.useState([]);
+  const [sobremesasSelecionado, setSobremesasSelecionado] = React.useState([]);
 
-function App(){
-  return(
+  return (
     <>
-    <Overlay />
+      <Overlay />
 
-    <Header />
+      <Header />
 
-    <Menu />
+      <Menu
+        controleBotao={controleBotao}
+        setControleBotao={setControleBotao}
+        pratosSelecionado={pratosSelecionado}
+        setPratosSelecionado={setPratosSelecionado}
+        bebidasSelecionado={bebidasSelecionado}
+        setBebidasSelecionado={setBebidasSelecionado}
+        sobremesasSelecionado={sobremesasSelecionado}
+        setSobremesasSelecionado={setSobremesasSelecionado}
+      />
 
-    <Footer />
+      <Footer
+        controleBotao={controleBotao}
+        setControleBotao={setControleBotao}
+        pratosSelecionado={pratosSelecionado}
+        bebidasSelecionado={bebidasSelecionado}
+        sobremesasSelecionado={sobremesasSelecionado}
+      />
     </>
   );
 }
